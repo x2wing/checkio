@@ -1,6 +1,6 @@
 import re
 def checkio(words: str) -> bool:
-    return True if re.match(r"(?:[A-Za-z]+\s*){3}", words) else False
+	return True if re.search(r".*?[A-Za-z]+\s[A-Za-z]+\s[A-Za-z]+", words) else False
     
 
 
