@@ -15,9 +15,6 @@ class Warrior:
         if self.health <= 0:
             self.is_alive = False
 
-    # def get_health(self):
-    #     return self.health
-
 
 class Knight(Warrior):
     def __init__(self):
@@ -38,19 +35,19 @@ class Army:
         self.army_health = 0
         self.army_attack = 0
 
-    def add_units(self, solder: Warrior, amt):
+    def add_units(self, solder: Warrior, amount):
         solder = solder()
-        self.army_health += amt * solder.health
-        self.army_attack += amt * solder.attack
-        print(self.army_health, self.army_attack)
+        self.army_health += amount * solder.health
+        self.army_attack += amount * solder.attack
 
 
 class Battle:
-    def __init__(self):
-        self.win = None
 
-    # def fight(self, army1: Army, army2: Army) -> bool:
-    #     army1
+    def fight(self, army1: Army, army2: Army) -> bool:
+        k = (army1.army_health / army2.army_health) * (army1.army_attack / army2.army_attack)
+        if k < 1:
+            return False
+        return True
 
 
 if __name__ == '__main__':
@@ -106,8 +103,8 @@ if __name__ == '__main__':
     army_4 = Army()
     army_4.add_units(Warrior, 30)
 
-    # battle = Battle()
-    #
-    # assert battle.fight(my_army, enemy_army) == True
-    # assert battle.fight(army_3, army_4) == False
-    # print("Coding complete? Let's try tests!")
+    battle = Battle()
+
+    assert battle.fight(my_army, enemy_army) == True
+    assert battle.fight(army_3, army_4) == False
+    print("Coding complete? Let's try tests!")
